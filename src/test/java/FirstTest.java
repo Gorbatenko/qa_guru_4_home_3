@@ -1,10 +1,11 @@
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FirstTest {
@@ -14,8 +15,7 @@ public class FirstTest {
         //act
         open("https://github.com/selenide/selenide");
         $(byText("Wiki")).click();
-
-        $$(".Box .Box-row a").find(text("SoftAssertions")).click();
+        $$("#wiki-pages-box a").find(text("SoftAssertions")).click();
 
         SelenideElement exampleJUnit = $(byText("Using JUnit5 extend test class:")).closest("ol").sibling(0);
 
@@ -31,6 +31,5 @@ public class FirstTest {
                 text("$(\"#second\").should(visible).click();"),
                 text("}\n}")
         );
-        sleep(5000);
     }
 }
